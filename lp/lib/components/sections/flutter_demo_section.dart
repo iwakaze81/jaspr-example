@@ -42,11 +42,12 @@ class FlutterDemoSection extends StatelessComponent {
             // FlutterEmbedView.deferred は画面に入るまで Flutter を初期化しない
             // → LP 全体の初期 FCP を保護する重要なパフォーマンス最適化
             FlutterEmbedView.deferred(
+              styles: Styles(height: 580.px),
               constraints: ViewConstraints(
                 minWidth: 320,
                 minHeight: 580,
                 maxWidth: 400,
-                maxHeight: double.infinity,
+                maxHeight: 580,
               ),
               loadLibrary: feed.loadLibrary(),
               builder: () => feed.FeedPreviewWidget(),
