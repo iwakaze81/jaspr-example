@@ -87,7 +87,7 @@ void main() {
       meta(name: 'theme-color', content: '#6366f1'),
       link(rel: 'manifest', href: 'manifest.json'),
       // 初期テーマ判定（FOUC 防止のため body より前に同期実行）
-      script([Component.text(_themeInitScript)]),
+      script(content: _themeInitScript),
       // jaspr_flutter_embed に必要な Flutter bootstrap スクリプト
       script(src: 'flutter_bootstrap.js', async: true),
     ],
