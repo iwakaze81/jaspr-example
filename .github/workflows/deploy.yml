@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup Flutter (via FVM)
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           flutter-version: '3.41.9'
           channel: 'stable'
@@ -41,21 +41,18 @@ jobs:
 
       - name: Build Jaspr LP
         working-directory: lp
-        run: dart run jaspr build
+        run: dart run jaspr_cli:jaspr build
 
       # ── 統合 & デプロイ ──────────────────────────────────────────
       - name: Merge build outputs
         run: |
           mkdir -p dist/app
-          # LP を dist/ のルートに配置
-          cp -r lp/build/web/. dist/
-          # Flutter Web を dist/app/ に配置
+          cp -r lp/build/jaspr/. dist/
           cp -r flutter_app/build/web/. dist/app/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          # SPA フォールバック: 404 → index.html（Flutter Web 用）
           enable_jekyll: false
