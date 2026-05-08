@@ -37,14 +37,16 @@ jaspr-example/
 │   └── architecture.md  # 技術設計ドキュメント
 └── .github/
     └── workflows/
-        └── deploy.yml   # GitHub Pages へのデプロイ
+        ├── deploy.yml   # main → 本番デプロイ（gh-pages ブランチ root）
+        └── preview.yml  # PR → プレビューデプロイ（gh-pages の pr-preview/pr-N/）
 ```
 
 ## デプロイ先 URL 構造
 
 ```
-https://<user>.github.io/jaspr-example/          # Jaspr LP
-https://<user>.github.io/jaspr-example/app/      # Flutter Web App
+https://<user>.github.io/jaspr-example/                   # Jaspr LP（本番）
+https://<user>.github.io/jaspr-example/app/               # Flutter Web App（本番）
+https://<user>.github.io/jaspr-example/pr-preview/pr-N/   # PR #N の LP プレビュー
 ```
 
 ## ローカル開発
@@ -77,15 +79,36 @@ fvm flutter build web --base-href /jaspr-example/app/
 
 ## デプロイ
 
-`main` ブランチへのプッシュで GitHub Actions が自動実行されます。
+本番と PR プレビューはどちらも `gh-pages` ブランチに同居させる構成です。
+
+### 本番デプロイ（`main` への push）
+
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml)
 
 1. Flutter Web をビルド → `dist/app/` に配置
 2. Jaspr LP をビルド → `dist/` に配置
-3. `actions/upload-pages-artifact` で `dist/` をアーティファクト化し、`actions/deploy-pages` で GitHub Pages へ直接デプロイ
+3. `JamesIves/github-pages-deploy-action` で `dist/` を `gh-pages` ブランチの root に publish
+   - `clean-exclude: pr-preview` で PR プレビュー用ディレクトリは保持
 
-GitHub Pages の Source 設定は **GitHub Actions** にする必要があります（`gh-pages` ブランチは使用しません）。
+### PR プレビュー（PR への push）
 
-詳細は [docs/architecture.md](docs/architecture.md) および [.github/workflows/deploy.yml](.github/workflows/deploy.yml) を参照。
+[.github/workflows/preview.yml](.github/workflows/preview.yml)
+
+1. Jaspr LP のみビルド（`BASE_HREF=/jaspr-example/pr-preview/pr-N/`）
+2. `rossjrw/pr-preview-action` で `gh-pages` の `pr-preview/pr-N/` 以下にデプロイ
+3. PR にプレビュー URL がコメント投稿される
+4. PR が close されるとプレビューは自動削除
+
+> フォーク元 PR ではシークレット書込権限が無いためプレビューはスキップされます。
+
+### GitHub Pages の Source 設定
+
+リポジトリ Settings → Pages で以下を設定してください。
+
+- **Source**: Deploy from a branch
+- **Branch**: `gh-pages` / `(root)`
+
+詳細は [docs/architecture.md](docs/architecture.md) を参照。
 
 ## 技術スタック
 

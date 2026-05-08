@@ -90,12 +90,17 @@ LP とは完全に独立したプロジェクト。LP の「Get Started」ボタ
 
 ## デプロイフロー
 
+本番と PR プレビューを同じ `gh-pages` ブランチに同居させる。
+本番は root に、PR プレビューは `pr-preview/pr-N/` サブディレクトリに配置する。
+
+### 本番（main への push）
+
 ```
 main ブランチへの push
         │
         ▼
 ┌─────────────────────────────────┐
-│ GitHub Actions (build job)      │
+│ deploy.yml (build-and-deploy)   │
 │                                 │
 │ 1. Flutter Web ビルド           │ → flutter_app/build/web/
 │ 2. Jaspr LP ビルド              │ → lp/build/jaspr/
@@ -103,21 +108,43 @@ main ブランチへの push
 │ 3. dist/ にマージ               │
 │    dist/        ← LP            │
 │    dist/app/    ← Flutter       │
-│ 4. upload-pages-artifact        │
+│ 4. JamesIves/github-pages-      │
+│    deploy-action                │
+│    branch: gh-pages             │
+│    folder: dist                 │
+│    clean-exclude: pr-preview    │ ← PR プレビューを保持
 └─────────────────────────────────┘
+        │
+        ▼
+gh-pages ブランチ root を Pages が公開
+```
+
+### PR プレビュー（PR への push）
+
+```
+PR open / synchronize / reopen
         │
         ▼
 ┌─────────────────────────────────┐
-│ GitHub Actions (deploy job)     │
+│ preview.yml (preview)           │
 │                                 │
-│ actions/deploy-pages            │
+│ 1. Jaspr LP のみビルド          │ → lp/build/jaspr/
+│    --dart-define=BASE_HREF=     │
+│      /jaspr-example/            │
+│      pr-preview/pr-N/           │
+│ 2. rossjrw/pr-preview-action    │
+│    preview-branch: gh-pages     │
+│    umbrella-dir: pr-preview     │
 └─────────────────────────────────┘
         │
         ▼
-GitHub Pages 公開
+gh-pages の pr-preview/pr-N/ に
+LP がデプロイされ PR にコメント
+
+PR が close されると pr-preview/pr-N/ は自動削除
 ```
 
-> **GitHub Pages の Source 設定**: Settings → Pages → Source を **GitHub Actions** に設定する必要がある。Branch 指定では `actions/deploy-pages` が機能しない。
+> **GitHub Pages の Source 設定**: Settings → Pages → Source を **Deploy from a branch** にし、Branch を `gh-pages` / `(root)` に設定する。
 
 ---
 
