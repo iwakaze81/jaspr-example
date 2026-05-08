@@ -36,12 +36,40 @@ class S {
           (icon: '🔒', title: 'プライバシーファースト', desc: 'エンドツーエンド暗号化、細かいプライバシー設定、データ販売ゼロ。あなたのデータはあなたのもの。'),
         ]
       : [
-          (icon: '⚡️', title: 'Real-time Feed', desc: "Posts, reactions, and comments update instantly across all devices — powered by Flutter's reactive UI."),
-          (icon: '📸', title: 'Stories & Moments', desc: "Share your day with disappearing stories. Full-screen, immersive — built with Flutter's animation engine."),
-          (icon: '💬', title: 'Direct Messaging', desc: 'Encrypted DMs with read receipts, emoji reactions, and media sharing — native feel on every platform.'),
-          (icon: '🔔', title: 'Smart Notifications', desc: 'Contextual push notifications that respect your focus time. Powered by platform-native APIs via Flutter plugins.'),
-          (icon: '🌐', title: 'Cross-Platform', desc: 'One Dart codebase. Pixel-perfect on Web, iOS, and Android. No compromises, no wrappers.'),
-          (icon: '🔒', title: 'Privacy First', desc: 'End-to-end encryption, granular privacy controls, and zero data selling. Your data stays yours.'),
+          (
+            icon: '⚡️',
+            title: 'Real-time Feed',
+            desc:
+                "Posts, reactions, and comments update instantly across all devices — powered by Flutter's reactive UI.",
+          ),
+          (
+            icon: '📸',
+            title: 'Stories & Moments',
+            desc:
+                "Share your day with disappearing stories. Full-screen, immersive — built with Flutter's animation engine.",
+          ),
+          (
+            icon: '💬',
+            title: 'Direct Messaging',
+            desc:
+                'Encrypted DMs with read receipts, emoji reactions, and media sharing — native feel on every platform.',
+          ),
+          (
+            icon: '🔔',
+            title: 'Smart Notifications',
+            desc:
+                'Contextual push notifications that respect your focus time. Powered by platform-native APIs via Flutter plugins.',
+          ),
+          (
+            icon: '🌐',
+            title: 'Cross-Platform',
+            desc: 'One Dart codebase. Pixel-perfect on Web, iOS, and Android. No compromises, no wrappers.',
+          ),
+          (
+            icon: '🔒',
+            title: 'Privacy First',
+            desc: 'End-to-end encryption, granular privacy controls, and zero data selling. Your data stays yours.',
+          ),
         ];
 
   // ── Demo section ────────────────────────────────────────────
@@ -53,7 +81,8 @@ class S {
   String get demoPoint1 => locale == AppLocale.ja ? '⚡️ ネイティブ Flutter レンダリング' : '⚡️ Native Flutter rendering';
   String get demoPoint2 => locale == AppLocale.ja ? '🎨 Flutter アニメーション & ジェスチャー' : '🎨 Flutter animations & gestures';
   String get demoPoint3 => locale == AppLocale.ja ? '🔗 Jaspr の状態と連携' : '🔗 Communicates with Jaspr state';
-  String get demoCaption => locale == AppLocale.ja ? '↑ これはブラウザでネイティブに動く Flutter です' : '↑ This is Flutter, running natively in your browser';
+  String get demoCaption =>
+      locale == AppLocale.ja ? '↑ これはブラウザでネイティブに動く Flutter です' : '↑ This is Flutter, running natively in your browser';
 
   // ── Platform section ─────────────────────────────────────────
   String get platformTitle1 => locale == AppLocale.ja ? 'ひとつのコードベース。' : 'One codebase.';
@@ -64,14 +93,44 @@ class S {
 
   List<({String icon, String title, String desc, List<String> features})> get platforms => locale == AppLocale.ja
       ? [
-          (icon: '🌐', title: 'Web', desc: 'Jaspr + Flutter Web で構築。SEO 対応 LP に Flutter ウィジェットを埋め込み。', features: ['Progressive Web App', 'WebAssembly ターゲット', 'JS フレームワーク不要']),
-          (icon: '📱', title: 'iOS', desc: 'ネイティブ ARM64 にコンパイル。Flutter プラグイン経由でプラットフォーム API に直アクセス。', features: ['ネイティブパフォーマンス', 'プラットフォーム外観', 'App Store 対応']),
-          (icon: '🤖', title: 'Android', desc: 'ネイティブ ARM64/x86 にコンパイル。Flutter のレンダリングエンジンで Material Design を実現。', features: ['Google Play 対応', 'アダプティブアイコン', 'Material You 対応']),
+          (
+            icon: '🌐',
+            title: 'Web',
+            desc: 'Jaspr + Flutter Web で構築。SEO 対応 LP に Flutter ウィジェットを埋め込み。',
+            features: ['Progressive Web App', 'WebAssembly ターゲット', 'JS フレームワーク不要'],
+          ),
+          (
+            icon: '📱',
+            title: 'iOS',
+            desc: 'ネイティブ ARM64 にコンパイル。Flutter プラグイン経由でプラットフォーム API に直アクセス。',
+            features: ['ネイティブパフォーマンス', 'プラットフォーム外観', 'App Store 対応'],
+          ),
+          (
+            icon: '🤖',
+            title: 'Android',
+            desc: 'ネイティブ ARM64/x86 にコンパイル。Flutter のレンダリングエンジンで Material Design を実現。',
+            features: ['Google Play 対応', 'アダプティブアイコン', 'Material You 対応'],
+          ),
         ]
       : [
-          (icon: '🌐', title: 'Web', desc: 'Built with Jaspr + Flutter Web. SEO-friendly LP with embedded Flutter widgets.', features: ['Progressive Web App', 'WebAssembly target', 'No JavaScript frameworks']),
-          (icon: '📱', title: 'iOS', desc: 'Compiled to native ARM64. Uses platform APIs directly via Flutter plugins.', features: ['Native performance', 'Platform look & feel', 'App Store ready']),
-          (icon: '🤖', title: 'Android', desc: "Compiled to native ARM64/x86. Material Design with Flutter's render engine.", features: ['Google Play ready', 'Adaptive icons', 'Material You support']),
+          (
+            icon: '🌐',
+            title: 'Web',
+            desc: 'Built with Jaspr + Flutter Web. SEO-friendly LP with embedded Flutter widgets.',
+            features: ['Progressive Web App', 'WebAssembly target', 'No JavaScript frameworks'],
+          ),
+          (
+            icon: '📱',
+            title: 'iOS',
+            desc: 'Compiled to native ARM64. Uses platform APIs directly via Flutter plugins.',
+            features: ['Native performance', 'Platform look & feel', 'App Store ready'],
+          ),
+          (
+            icon: '🤖',
+            title: 'Android',
+            desc: "Compiled to native ARM64/x86. Material Design with Flutter's render engine.",
+            features: ['Google Play ready', 'Adaptive icons', 'Material You support'],
+          ),
         ];
 
   String get metricCodebase => locale == AppLocale.ja ? 'コードベース' : 'Codebase';
@@ -88,26 +147,63 @@ class S {
 
   List<({String quote, String name, String handle, String avatarHex})> get testimonials => locale == AppLocale.ja
       ? [
-          (quote: '"iPhone でも Web でも同じ体験ができる初めてのソーシャルアプリ。妥協がない。"', name: 'Yuki Tanaka', handle: '@yuki_codes', avatarHex: '#6366f1'),
-          (quote: '"Flutter ベースの UI は本当になめらか。フィードのスクロールは今まで使ったどのネイティブアプリより気持ちいい。"', name: 'Taro Mori', handle: '@taro_m', avatarHex: '#ec4899'),
-          (quote: '"LP に Jaspr を使ってるのが最高。高速ロード、SEO 対策、中は Flutter — 天才的な設計。"', name: 'Hanako Sato', handle: '@hanako_dev', avatarHex: '#10b981'),
+          (
+            quote: '"iPhone でも Web でも同じ体験ができる初めてのソーシャルアプリ。妥協がない。"',
+            name: 'Yuki Tanaka',
+            handle: '@yuki_codes',
+            avatarHex: '#6366f1',
+          ),
+          (
+            quote: '"Flutter ベースの UI は本当になめらか。フィードのスクロールは今まで使ったどのネイティブアプリより気持ちいい。"',
+            name: 'Taro Mori',
+            handle: '@taro_m',
+            avatarHex: '#ec4899',
+          ),
+          (
+            quote: '"LP に Jaspr を使ってるのが最高。高速ロード、SEO 対策、中は Flutter — 天才的な設計。"',
+            name: 'Hanako Sato',
+            handle: '@hanako_dev',
+            avatarHex: '#10b981',
+          ),
         ]
       : [
-          (quote: '"Pulse is the first social app that actually feels the same on my iPhone and on the web. No compromises."', name: 'Yuki Tanaka', handle: '@yuki_codes', avatarHex: '#6366f1'),
-          (quote: '"The Flutter-based UI is silky smooth. Scrolling through the feed feels better than any native app I\'ve used."', name: 'Taro Mori', handle: '@taro_m', avatarHex: '#ec4899'),
-          (quote: '"I love that the web version uses Jaspr for the landing page. Fast load, great SEO, and Flutter inside — genius."', name: 'Hanako Sato', handle: '@hanako_dev', avatarHex: '#10b981'),
+          (
+            quote:
+                '"Pulse is the first social app that actually feels the same on my iPhone and on the web. No compromises."',
+            name: 'Yuki Tanaka',
+            handle: '@yuki_codes',
+            avatarHex: '#6366f1',
+          ),
+          (
+            quote:
+                '"The Flutter-based UI is silky smooth. Scrolling through the feed feels better than any native app I\'ve used."',
+            name: 'Taro Mori',
+            handle: '@taro_m',
+            avatarHex: '#ec4899',
+          ),
+          (
+            quote:
+                '"I love that the web version uses Jaspr for the landing page. Fast load, great SEO, and Flutter inside — genius."',
+            name: 'Hanako Sato',
+            handle: '@hanako_dev',
+            avatarHex: '#10b981',
+          ),
         ];
 
   // ── CTA ─────────────────────────────────────────────────────
   String get ctaTitle1 => locale == AppLocale.ja ? '参加しませんか、' : 'Ready to join';
   String get ctaTitle2 => locale == AppLocale.ja ? 'Pulse へ？' : 'Pulse?';
-  String get ctaDesc1 => locale == AppLocale.ja ? '無料で始めよう。Web・iOS・Android 対応。' : 'Start for free. Available on Web, iOS, and Android.';
-  String get ctaDesc2 => locale == AppLocale.ja ? 'Flutter で構築 — ひとつのアプリで、どこでも。' : 'Built with Flutter — one app, everywhere.';
+  String get ctaDesc1 =>
+      locale == AppLocale.ja ? '無料で始めよう。Web・iOS・Android 対応。' : 'Start for free. Available on Web, iOS, and Android.';
+  String get ctaDesc2 =>
+      locale == AppLocale.ja ? 'Flutter で構築 — ひとつのアプリで、どこでも。' : 'Built with Flutter — one app, everywhere.';
   String get ctaTryWeb => locale == AppLocale.ja ? 'Web アプリを試す' : 'Try Web App';
   String get ctaAppStore => locale == AppLocale.ja ? '↓ App Store' : '↓ App Store';
   String get ctaGooglePlay => locale == AppLocale.ja ? '↓ Google Play' : '↓ Google Play';
-  String get ctaNote => locale == AppLocale.ja ? 'クレジットカード不要。個人利用は永久無料。' : 'No credit card required. Free forever for personal use.';
+  String get ctaNote =>
+      locale == AppLocale.ja ? 'クレジットカード不要。個人利用は永久無料。' : 'No credit card required. Free forever for personal use.';
 
   // ── Footer ───────────────────────────────────────────────────
-  String get footerTagline => locale == AppLocale.ja ? 'Flutter で作られた、Flutter のためのプラットフォーム。' : 'The platform built with Flutter, for everyone.';
+  String get footerTagline =>
+      locale == AppLocale.ja ? 'Flutter で作られた、Flutter のためのプラットフォーム。' : 'The platform built with Flutter, for everyone.';
 }

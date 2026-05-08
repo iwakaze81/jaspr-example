@@ -47,50 +47,57 @@ void main() {
 
   const base = String.fromEnvironment('BASE_HREF', defaultValue: '/');
 
-  runApp(Document(
-    title: 'Pulse — Flutter SNS',
-    base: base,
-    styles: [
-      css.import('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'),
-      // デフォルト（ダーク）。data-theme 未設定時のフォールバック。
-      css(':root').styles(raw: _darkVars),
-      // 未指定時、システム設定がライトならライトを採用。
-      css.media(MediaQuery.raw('(prefers-color-scheme: light)'), [
-        css(':root:not([data-theme])').styles(raw: _lightVars),
-      ]),
-      // 明示指定（toggle 押下またはインラインスクリプトで設定）。
-      css(':root[data-theme="light"]').styles(raw: _lightVars),
-      css(':root[data-theme="dark"]').styles(raw: _darkVars),
-      css('*, *::before, *::after').styles(boxSizing: .borderBox),
-      css('html, body').styles(
-        width: 100.percent,
-        minHeight: 100.vh,
-        margin: .zero,
-        padding: .zero,
-        fontFamily: const .list([FontFamily('Inter'), FontFamilies.sansSerif]),
-        backgroundColor: const Color('var(--color-bg)'),
-        color: const Color('var(--color-text-primary)'),
-        raw: {'transition': 'background-color 200ms ease, color 200ms ease'},
-      ),
-      css('a').styles(color: Color.inherit, textDecoration: .none),
-      css('img, svg').styles(display: .block, maxWidth: 100.percent),
-      // グラデーションテキストユーティリティ（CSS-in-Dart の raw: で任意 CSS を記述）
-      css('.gradient-text').styles(raw: {
-        'background': 'linear-gradient(135deg, #6366f1, #a78bfa)',
-        '-webkit-background-clip': 'text',
-        '-webkit-text-fill-color': 'transparent',
-        'background-clip': 'text',
-      }),
-    ],
-    head: [
-      meta(name: 'description', content: 'The social platform built entirely with Flutter — native performance on every device.'),
-      meta(name: 'theme-color', content: '#6366f1'),
-      link(rel: 'manifest', href: 'manifest.json'),
-      // 初期テーマ判定（FOUC 防止のため body より前に同期実行）
-      script([Component.text(_themeInitScript)]),
-      // jaspr_flutter_embed に必要な Flutter bootstrap スクリプト
-      script(src: 'flutter_bootstrap.js', async: true),
-    ],
-    body: const App(),
-  ));
+  runApp(
+    Document(
+      title: 'Pulse — Flutter SNS',
+      base: base,
+      styles: [
+        css.import('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'),
+        // デフォルト（ダーク）。data-theme 未設定時のフォールバック。
+        css(':root').styles(raw: _darkVars),
+        // 未指定時、システム設定がライトならライトを採用。
+        css.media(MediaQuery.raw('(prefers-color-scheme: light)'), [
+          css(':root:not([data-theme])').styles(raw: _lightVars),
+        ]),
+        // 明示指定（toggle 押下またはインラインスクリプトで設定）。
+        css(':root[data-theme="light"]').styles(raw: _lightVars),
+        css(':root[data-theme="dark"]').styles(raw: _darkVars),
+        css('*, *::before, *::after').styles(boxSizing: .borderBox),
+        css('html, body').styles(
+          width: 100.percent,
+          minHeight: 100.vh,
+          margin: .zero,
+          padding: .zero,
+          fontFamily: const .list([FontFamily('Inter'), FontFamilies.sansSerif]),
+          backgroundColor: const Color('var(--color-bg)'),
+          color: const Color('var(--color-text-primary)'),
+          raw: {'transition': 'background-color 200ms ease, color 200ms ease'},
+        ),
+        css('a').styles(color: Color.inherit, textDecoration: .none),
+        css('img, svg').styles(display: .block, maxWidth: 100.percent),
+        // グラデーションテキストユーティリティ（CSS-in-Dart の raw: で任意 CSS を記述）
+        css('.gradient-text').styles(
+          raw: {
+            'background': 'linear-gradient(135deg, #6366f1, #a78bfa)',
+            '-webkit-background-clip': 'text',
+            '-webkit-text-fill-color': 'transparent',
+            'background-clip': 'text',
+          },
+        ),
+      ],
+      head: [
+        meta(
+          name: 'description',
+          content: 'The social platform built entirely with Flutter — native performance on every device.',
+        ),
+        meta(name: 'theme-color', content: '#6366f1'),
+        link(rel: 'manifest', href: 'manifest.json'),
+        // 初期テーマ判定（FOUC 防止のため body より前に同期実行）
+        script(content: _themeInitScript),
+        // jaspr_flutter_embed に必要な Flutter bootstrap スクリプト
+        script(src: 'flutter_bootstrap.js', async: true),
+      ],
+      body: const App(),
+    ),
+  );
 }

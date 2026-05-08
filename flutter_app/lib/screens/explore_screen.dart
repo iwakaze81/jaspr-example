@@ -72,7 +72,10 @@ class _TopicCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(topic.label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
+          Text(
+            topic.label,
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
+          ),
           const SizedBox(height: 4),
           Text(topic.postCount, style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 12)),
         ],

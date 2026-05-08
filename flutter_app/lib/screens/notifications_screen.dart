@@ -46,7 +46,10 @@ class _NotificationTile extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Color(notification.color),
-            child: Text(notification.actor[0], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: Text(
+              notification.actor[0],
+              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
           Positioned(
             right: 0,
@@ -68,8 +71,14 @@ class _NotificationTile extends StatelessWidget {
         text: TextSpan(
           style: const TextStyle(fontSize: 14),
           children: [
-            TextSpan(text: notification.actor, style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.white)),
-            TextSpan(text: ' ${notification.action}', style: const TextStyle(color: Color(0xFF94A3B8))),
+            TextSpan(
+              text: notification.actor,
+              style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+            ),
+            TextSpan(
+              text: ' ${notification.action}',
+              style: const TextStyle(color: Color(0xFF94A3B8)),
+            ),
           ],
         ),
       ),

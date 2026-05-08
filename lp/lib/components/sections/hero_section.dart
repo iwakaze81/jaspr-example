@@ -53,7 +53,10 @@ class HeroSection extends StatelessComponent {
       div(classes: 'mockup__text', [
         div(classes: 'mockup__name', [Component.text(name)]),
         div(classes: 'mockup__body', [Component.text(body)]),
-        div(classes: 'mockup__actions', [span([Component.text(likes)]), span([Component.text(comments)])]),
+        div(classes: 'mockup__actions', [
+          span([Component.text(likes)]),
+          span([Component.text(comments)]),
+        ]),
       ]),
     ]);
   }
@@ -145,7 +148,11 @@ class HeroSection extends StatelessComponent {
       raw: {'background': 'linear-gradient(135deg, #ec4899, #f97316)'},
     ),
     css('.mockup__name').styles(fontSize: 0.8125.rem, fontWeight: FontWeight.w600),
-    css('.mockup__body').styles(fontSize: 0.875.rem, color: textSecondaryColor, margin: Margin.only(top: 0.25.rem)),
+    css('.mockup__body').styles(
+      fontSize: 0.875.rem,
+      color: textSecondaryColor,
+      margin: Margin.only(top: 0.25.rem),
+    ),
     css('.mockup__actions').styles(
       display: .flex,
       gap: Gap(row: 1.rem, column: 1.rem),
@@ -154,7 +161,10 @@ class HeroSection extends StatelessComponent {
       color: textMutedColor,
     ),
     css.media(MediaQuery.raw('(max-width: 900px)'), [
-      css('.hero').styles(flexDirection: .column, padding: Padding.only(top: 7.rem, bottom: 6.rem, left: 1.5.rem, right: 1.5.rem)),
+      css('.hero').styles(
+        flexDirection: .column,
+        padding: Padding.only(top: 7.rem, bottom: 6.rem, left: 1.5.rem, right: 1.5.rem),
+      ),
       css('.hero__title').styles(fontSize: 2.75.rem),
       css('.hero__visual').styles(display: .none),
     ]),
