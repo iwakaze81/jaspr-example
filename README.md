@@ -3,6 +3,17 @@
 **Pulse** は Flutter で作られた架空の toC 向け SNS サービスです。  
 このリポジトリは [Jaspr](https://docs.page/schultek/jaspr) を使ったランディングページ（LP）のサンプルプロジェクトです。
 
+## デモ
+
+GitHub Pages にデプロイ済みの動作デモを公開しています。
+
+| サイト | URL |
+|---|---|
+| Jaspr LP | <https://iwakaze81.github.io/jaspr-example/> |
+| Flutter Web App | <https://iwakaze81.github.io/jaspr-example/app/> |
+
+LP 内の「Try it live」セクションでは、`jaspr_flutter_embed` で Flutter のフィードウィジェットを HTML ページに直接埋め込んでいる様子が確認できます。
+
 ## このプロジェクトが示すもの
 
 | 機能 | 実装箇所 |
@@ -35,9 +46,6 @@ jaspr-example/
 https://<user>.github.io/jaspr-example/          # Jaspr LP
 https://<user>.github.io/jaspr-example/app/      # Flutter Web App
 ```
-
-LP の「Try it live」セクションでは `jaspr_flutter_embed` を使い、  
-Flutter のフィードウィジェットを HTML ページ内に直接レンダリングします。
 
 ## ローカル開発
 
@@ -73,7 +81,9 @@ fvm flutter build web --base-href /jaspr-example/app/
 
 1. Flutter Web をビルド → `dist/app/` に配置
 2. Jaspr LP をビルド → `dist/` に配置
-3. `dist/` を `gh-pages` ブランチにデプロイ
+3. `actions/upload-pages-artifact` で `dist/` をアーティファクト化し、`actions/deploy-pages` で GitHub Pages へ直接デプロイ
+
+GitHub Pages の Source 設定は **GitHub Actions** にする必要があります（`gh-pages` ブランチは使用しません）。
 
 詳細は [docs/architecture.md](docs/architecture.md) および [.github/workflows/deploy.yml](.github/workflows/deploy.yml) を参照。
 
