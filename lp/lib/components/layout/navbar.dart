@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../i18n/locale_provider.dart';
+import '../../platform/theme_platform.dart';
 import '../../styles/theme.dart';
 import '../ui/button.dart';
 
@@ -21,10 +22,10 @@ class Navbar extends StatefulComponent {
     ),
     css('.navbar--scrolled').styles(
       raw: {
-        'background': 'rgba(10, 10, 15, 0.85)',
+        'background': 'var(--color-navbar-bg)',
         'backdrop-filter': 'blur(12px)',
         '-webkit-backdrop-filter': 'blur(12px)',
-        'border-bottom': '1px solid rgba(255,255,255,0.06)',
+        'border-bottom': '1px solid var(--color-navbar-border)',
       },
     ),
     css('.navbar__inner').styles(
@@ -77,6 +78,35 @@ class Navbar extends StatefulComponent {
       color: const Color('#ffffff'),
     ),
     css('.locale-btn:not(.locale-btn--active):hover').styles(color: textPrimaryColor),
+    css('.theme-toggle').styles(
+      display: .flex,
+      alignItems: .center,
+      justifyContent: .center,
+      width: 2.25.rem,
+      height: 2.25.rem,
+      padding: .zero,
+      radius: BorderRadius.circular(0.5.rem),
+      border: Border.all(width: 1.px, color: borderColor),
+      color: textSecondaryColor,
+      fontSize: 1.rem,
+      raw: {
+        'cursor': 'pointer',
+        'background': 'none',
+        'transition': 'color 200ms ease, border-color 200ms ease',
+      },
+    ),
+    css('.theme-toggle:hover').styles(
+      color: textPrimaryColor,
+      border: Border.all(width: 1.px, color: primaryColor),
+    ),
+    css('.theme-toggle__icon').styles(
+      raw: {
+        'display': 'none',
+        'line-height': '1',
+      },
+    ),
+    css(':root[data-theme="dark"] .theme-toggle__icon--sun').styles(raw: {'display': 'inline-block'}),
+    css(':root[data-theme="light"] .theme-toggle__icon--moon').styles(raw: {'display': 'inline-block'}),
     css.media(MediaQuery.raw('(max-width: 768px)'), [
       css('.navbar__links').styles(display: .none),
     ]),
@@ -110,9 +140,22 @@ class NavbarState extends State<Navbar> {
           ]),
           div(classes: 'navbar__links', [
             _localeToggle(locale, provider.onLocaleChanged),
+            _themeToggle(),
             AppButton(label: s.navGetStarted, href: '/app/', variant: ButtonVariant.primary),
           ]),
         ]),
+      ],
+    );
+  }
+
+  Component _themeToggle() {
+    return button(
+      classes: 'theme-toggle',
+      attributes: const {'aria-label': 'Toggle theme', 'type': 'button'},
+      events: {'click': (e) => toggleTheme()},
+      [
+        span(classes: 'theme-toggle__icon theme-toggle__icon--sun', [Component.text('☀')]),
+        span(classes: 'theme-toggle__icon theme-toggle__icon--moon', [Component.text('🌙')]),
       ],
     );
   }

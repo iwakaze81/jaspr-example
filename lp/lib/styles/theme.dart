@@ -1,18 +1,20 @@
 import 'package:jaspr/dom.dart';
 
 // ── カラーパレット ─────────────────────────────────────────────────────────
-const primaryColor = Color('#6366f1');
-const primaryDarkColor = Color('#4f46e5');
-const primaryGlowColor = Color('#6366f1'); // with opacity in CSS
+// CSS Custom Properties 経由で参照することで、ライト/ダーク切替に追従する。
+// 実体は main.server.dart の `:root` / `[data-theme="light"]` / `[data-theme="dark"]` で定義。
+const primaryColor = Color('var(--color-primary)');
+const primaryDarkColor = Color('var(--color-primary-dark)');
+const primaryGlowColor = Color('var(--color-primary)'); // with opacity in CSS
 
-const bgColor = Color('#0a0a0f');
-const surfaceColor = Color('#111118');
-const surfaceElevatedColor = Color('#1a1a2e');
-const borderColor = Color('#1e1e2e');
+const bgColor = Color('var(--color-bg)');
+const surfaceColor = Color('var(--color-surface)');
+const surfaceElevatedColor = Color('var(--color-surface-elevated)');
+const borderColor = Color('var(--color-border)');
 
-const textPrimaryColor = Color('#f1f5f9');
-const textSecondaryColor = Color('#94a3b8');
-const textMutedColor = Color('#475569');
+const textPrimaryColor = Color('var(--color-text-primary)');
+const textSecondaryColor = Color('var(--color-text-secondary)');
+const textMutedColor = Color('var(--color-text-muted)');
 
 // ── スペーシング ──────────────────────────────────────────────────────────
 final sectionPaddingV = 6.rem;
