@@ -44,7 +44,10 @@ class ProfileScreen extends StatelessWidget {
                           border: Border.all(color: const Color(0xFF0a0a0f), width: 3),
                         ),
                         child: const Center(
-                          child: Text('Y', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
+                          child: Text(
+                            'Y',
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28),
+                          ),
                         ),
                       ),
                       const Spacer(),

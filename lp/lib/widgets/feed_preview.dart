@@ -30,7 +30,10 @@ class _FeedScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF0a0a0f),
-        title: const Text('Pulse', style: TextStyle(fontWeight: FontWeight.w800, color: Color(0xFF6366F1))),
+        title: const Text(
+          'Pulse',
+          style: TextStyle(fontWeight: FontWeight.w800, color: Color(0xFF6366F1)),
+        ),
         centerTitle: false,
         actions: [
           IconButton(icon: const Icon(Icons.add_box_outlined), onPressed: () {}),
@@ -46,7 +49,8 @@ class _FeedScreen extends StatelessWidget {
             username: 'yuki_t',
             displayName: 'Yuki Tanaka',
             avatarColor: Color(0xFF6366F1),
-            content: 'Flutter makes cross-platform feel truly native 🚀 No more compromise between performance and developer experience.',
+            content:
+                'Flutter makes cross-platform feel truly native 🚀 No more compromise between performance and developer experience.',
             likes: 142,
             comments: 38,
             timeAgo: '2m',
@@ -178,8 +182,10 @@ class _FeedPostState extends State<_FeedPost> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(widget.displayName, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
-                    Text('@${widget.username} · ${widget.timeAgo}',
-                        style: const TextStyle(color: Color(0xFF475569), fontSize: 12)),
+                    Text(
+                      '@${widget.username} · ${widget.timeAgo}',
+                      style: const TextStyle(color: Color(0xFF475569), fontSize: 12),
+                    ),
                   ],
                 ),
               ),
@@ -215,8 +221,10 @@ class _FeedPostState extends State<_FeedPost> {
                       color: _liked ? const Color(0xFFEC4899) : const Color(0xFF475569),
                     ),
                     const SizedBox(width: 4),
-                    Text('${widget.likes + (_liked ? 1 : 0)}',
-                        style: const TextStyle(fontSize: 12, color: Color(0xFF475569))),
+                    Text(
+                      '${widget.likes + (_liked ? 1 : 0)}',
+                      style: const TextStyle(fontSize: 12, color: Color(0xFF475569)),
+                    ),
                   ],
                 ),
               ),

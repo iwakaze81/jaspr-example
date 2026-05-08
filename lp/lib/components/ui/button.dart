@@ -60,7 +60,9 @@ class AppButton extends StatelessComponent {
       color: textPrimaryColor,
       border: Border.all(width: 1.px, color: borderColor),
     ),
-    css('.btn--secondary:hover').styles(border: Border.all(width: 1.px, color: primaryColor)),
+    css('.btn--secondary:hover').styles(
+      border: Border.all(width: 1.px, color: primaryColor),
+    ),
     css('.btn--ghost').styles(
       backgroundColor: const Color('transparent'),
       color: textSecondaryColor,

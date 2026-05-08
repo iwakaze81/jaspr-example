@@ -68,7 +68,10 @@ class PlatformSection extends StatelessComponent {
       backgroundColor: surfaceColor,
       border: Border.all(width: 1.px, color: borderColor),
     ),
-    css('.platform-card__icon').styles(fontSize: 2.5.rem, margin: Margin.only(bottom: 1.rem)),
+    css('.platform-card__icon').styles(
+      fontSize: 2.5.rem,
+      margin: Margin.only(bottom: 1.rem),
+    ),
     css('.platform-card__title').styles(
       fontSize: 1.25.rem,
       fontWeight: FontWeight.w700,

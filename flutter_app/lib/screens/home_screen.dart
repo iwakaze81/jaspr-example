@@ -27,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pulse', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 22, color: Color(0xFF6366F1))),
+        title: const Text(
+          'Pulse',
+          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 22, color: Color(0xFF6366F1)),
+        ),
         actions: [
           IconButton(icon: const Icon(Icons.search), onPressed: () {}),
           IconButton(icon: const Icon(Icons.mail_outline), onPressed: () {}),

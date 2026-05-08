@@ -32,7 +32,16 @@ class Footer extends StatelessComponent {
   Component _linkGroup(String title, List<String> links) {
     return div(classes: 'footer__group', [
       span(classes: 'footer__group-title', [Component.text(title)]),
-      ul(classes: 'footer__group-links', links.map((l) => li([a(href: '#', [Component.text(l)])])).toList()),
+      ul(
+        classes: 'footer__group-links',
+        links
+            .map(
+              (l) => li([
+                a(href: '#', [Component.text(l)]),
+              ]),
+            )
+            .toList(),
+      ),
     ]);
   }
 
@@ -40,7 +49,9 @@ class Footer extends StatelessComponent {
   static List<StyleRule> get styles => [
     css('.footer').styles(
       padding: Padding.only(top: 4.rem, bottom: 2.rem, left: 1.5.rem, right: 1.5.rem),
-      border: Border.only(top: BorderSide(color: borderColor, width: 1.px)),
+      border: Border.only(
+        top: BorderSide(color: borderColor, width: 1.px),
+      ),
     ),
     css('.footer__inner').styles(
       display: .flex,
@@ -91,7 +102,9 @@ class Footer extends StatelessComponent {
       maxWidth: 1200.px,
       margin: Margin.only(top: 3.rem, left: Unit.auto, right: Unit.auto),
       padding: Padding.only(top: 1.5.rem),
-      border: Border.only(top: BorderSide(color: borderColor, width: 1.px)),
+      border: Border.only(
+        top: BorderSide(color: borderColor, width: 1.px),
+      ),
       textAlign: .center,
     ),
     css('.footer__bottom p').styles(fontSize: 0.875.rem, color: textMutedColor),

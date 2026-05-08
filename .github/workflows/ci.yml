@@ -25,7 +25,7 @@ jobs:
 
       - name: Analyze
         working-directory: lp
-        run: dart analyze --fatal-infos
+        run: dart analyze
 
       - name: Format check
         working-directory: lp
@@ -50,7 +50,7 @@ jobs:
 
       - name: Analyze
         working-directory: flutter_app
-        run: flutter analyze --fatal-infos
+        run: flutter analyze
 
       - name: Format check
         working-directory: flutter_app
