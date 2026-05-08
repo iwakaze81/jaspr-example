@@ -9,8 +9,11 @@ import 'main.server.options.dart';
 void main() {
   Jaspr.initializeApp(options: defaultServerOptions);
 
+  const base = String.fromEnvironment('BASE_HREF', defaultValue: '/');
+
   runApp(Document(
     title: 'Pulse — Flutter SNS',
+    base: base,
     styles: [
       css.import('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'),
       css('*, *::before, *::after').styles(boxSizing: .borderBox),

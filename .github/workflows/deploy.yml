@@ -47,7 +47,7 @@ jobs:
 
       - name: Build Jaspr LP
         working-directory: lp
-        run: dart run jaspr_cli:jaspr build
+        run: dart run jaspr_cli:jaspr build --dart-define=BASE_HREF=/jaspr-example/
 
       # ── 統合 ────────────────────────────────────────────────────
       - name: Merge build outputs
