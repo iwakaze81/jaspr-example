@@ -37,7 +37,7 @@ class LocaleController extends StatefulComponent {
 }
 
 class _LocaleControllerState extends State<LocaleController> {
-  AppLocale _locale = AppLocale.en;
+  AppLocale _locale = AppLocale.ja;
 
   @override
   void initState() {
