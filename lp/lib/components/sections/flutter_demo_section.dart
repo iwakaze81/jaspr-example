@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_flutter_embed/jaspr_flutter_embed.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/badge.dart';
 
@@ -15,6 +16,7 @@ class FlutterDemoSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
     return section(
       id: 'demo',
       classes: 'demo-section',
@@ -23,19 +25,17 @@ class FlutterDemoSection extends StatelessComponent {
           div(classes: 'demo-section__text', [
             const Badge(label: '✦ Powered by jaspr_flutter_embed'),
             h2(classes: 'section-title demo-section__title', [
-              Component.text('Experience the app,'),
+              Component.text(s.demoTitle1),
               br(),
-              span(classes: 'gradient-text', [Component.text('right here.')]),
+              span(classes: 'gradient-text', [Component.text(s.demoTitle2)]),
             ]),
             p(classes: 'section-subtitle demo-section__desc', [
-              Component.text('This interactive demo is a real Flutter widget embedded directly in this HTML page using '),
-              code([Component.text('jaspr_flutter_embed')]),
-              Component.text('. No iframe, no redirect — Flutter running inside the DOM.'),
+              Component.text(s.demoDesc),
             ]),
             div(classes: 'demo-section__features', [
-              _point('⚡️ Native Flutter rendering'),
-              _point('🎨 Flutter animations & gestures'),
-              _point('🔗 Communicates with Jaspr state'),
+              _point(s.demoPoint1),
+              _point(s.demoPoint2),
+              _point(s.demoPoint3),
             ]),
           ]),
           div(classes: 'demo-section__embed', [
@@ -52,9 +52,7 @@ class FlutterDemoSection extends StatelessComponent {
               loadLibrary: feed.loadLibrary(),
               builder: () => feed.FeedPreviewWidget(),
             ),
-            p(classes: 'demo-section__caption', [
-              Component.text('↑ This is Flutter, running natively in your browser'),
-            ]),
+            p(classes: 'demo-section__caption', [Component.text(s.demoCaption)]),
           ]),
         ]),
       ],

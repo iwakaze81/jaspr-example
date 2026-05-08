@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/section_wrapper.dart';
 
@@ -9,53 +10,36 @@ class PlatformSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
     return SectionWrapper(
       id: 'platform',
       classes: 'platform-section',
       children: [
         div(classes: 'platform-section__header', [
           h2(classes: 'section-title', [
-            Component.text('One codebase.'),
+            Component.text(s.platformTitle1),
             br(),
-            span(classes: 'gradient-text', [Component.text('Every platform.')]),
+            span(classes: 'gradient-text', [Component.text(s.platformTitle2)]),
           ]),
-          p(classes: 'section-subtitle', [
-            Component.text('Flutter compiles to native ARM code on mobile and WebAssembly on the web. No bridges. No wrappers.'),
-          ]),
+          p(classes: 'section-subtitle', [Component.text(s.platformSubtitle)]),
         ]),
-        div(classes: 'platform-cards', [
-          _card('🌐', 'Web', 'Built with Jaspr + Flutter Web. SEO-friendly LP with embedded Flutter widgets.', [
-            'Progressive Web App',
-            'WebAssembly target',
-            'No JavaScript frameworks',
-          ]),
-          _card('📱', 'iOS', 'Compiled to native ARM64. Uses platform APIs directly via Flutter plugins.', [
-            'Native performance',
-            'Platform look & feel',
-            'App Store ready',
-          ]),
-          _card('🤖', 'Android', "Compiled to native ARM64/x86. Material Design with Flutter's render engine.", [
-            'Google Play ready',
-            'Adaptive icons',
-            'Material You support',
-          ]),
-        ]),
+        div(classes: 'platform-cards', s.platforms.map(_buildCard).toList()),
         div(classes: 'flutter-metrics', [
-          _metric('1', 'Codebase', 'for all platforms'),
-          _metric('60fps', 'Rendering', 'on all devices'),
-          _metric('<3s', 'Cold start', 'on web (WASM)'),
-          _metric('100', 'Lighthouse', 'performance score'),
+          _metric('1', s.metricCodebase, s.metricCodebaseSub),
+          _metric('60fps', s.metricRendering, s.metricRenderingSub),
+          _metric('<3s', s.metricColdStart, s.metricColdStartSub),
+          _metric('100', s.metricLighthouse, s.metricLighthouseSub),
         ]),
       ],
     );
   }
 
-  Component _card(String icon, String title, String desc, List<String> features) {
+  Component _buildCard(({String icon, String title, String desc, List<String> features}) platform) {
     return div(classes: 'platform-card', [
-      div(classes: 'platform-card__icon', [Component.text(icon)]),
-      h3(classes: 'platform-card__title', [Component.text(title)]),
-      p(classes: 'platform-card__desc', [Component.text(desc)]),
-      ul(classes: 'platform-card__features', features.map((f) => li([Component.text('✓  $f')])).toList()),
+      div(classes: 'platform-card__icon', [Component.text(platform.icon)]),
+      h3(classes: 'platform-card__title', [Component.text(platform.title)]),
+      p(classes: 'platform-card__desc', [Component.text(platform.desc)]),
+      ul(classes: 'platform-card__features', platform.features.map((f) => li([Component.text('✓  $f')])).toList()),
     ]);
   }
 

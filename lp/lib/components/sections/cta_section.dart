@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/button.dart';
 
@@ -9,24 +10,25 @@ class CtaSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
     return section(classes: 'cta-section', [
       div(classes: 'cta-section__inner', [
         h2(classes: 'cta-section__title', [
-          Component.text('Ready to join'),
+          Component.text(s.ctaTitle1),
           br(),
-          span(classes: 'gradient-text', [Component.text('Pulse?')]),
+          span(classes: 'gradient-text', [Component.text(s.ctaTitle2)]),
         ]),
         p(classes: 'cta-section__desc', [
-          Component.text('Start for free. Available on Web, iOS, and Android.'),
+          Component.text(s.ctaDesc1),
           br(),
-          Component.text('Built with Flutter — one app, everywhere.'),
+          Component.text(s.ctaDesc2),
         ]),
         div(classes: 'cta-section__actions', [
-          const AppButton(label: 'Try Web App', href: '/app/', size: 'lg'),
-          const AppButton(label: '↓ App Store', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
-          const AppButton(label: '↓ Google Play', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
+          AppButton(label: s.ctaTryWeb, href: '/app/', size: 'lg'),
+          AppButton(label: s.ctaAppStore, href: '#', variant: ButtonVariant.secondary, size: 'lg'),
+          AppButton(label: s.ctaGooglePlay, href: '#', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
-        p(classes: 'cta-section__note', [Component.text('No credit card required. Free forever for personal use.')]),
+        p(classes: 'cta-section__note', [Component.text(s.ctaNote)]),
       ]),
     ]);
   }

@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/button.dart';
 
@@ -10,11 +11,9 @@ class Navbar extends StatefulComponent {
   @override
   State<Navbar> createState() => NavbarState();
 
-  // @css はパブリッククラス/メンバーにのみ使用可能
   @css
   static List<StyleRule> get styles => [
     css('.navbar').styles(
-      // Position.fixed() でオフセットをまとめて指定（top/left/right は Position の引数）
       position: Position.fixed(top: Unit.zero, left: Unit.zero, right: Unit.zero),
       zIndex: ZIndex(50),
       padding: Padding.symmetric(vertical: 1.rem, horizontal: 1.5.rem),
@@ -57,6 +56,27 @@ class Navbar extends StatefulComponent {
       textDecoration: .none,
     ),
     css('.navbar__link:hover').styles(color: textPrimaryColor),
+    css('.locale-toggle').styles(
+      display: .flex,
+      alignItems: .center,
+      gap: Gap(row: 0.25.rem, column: 0.25.rem),
+      padding: Padding.symmetric(vertical: 0.375.rem, horizontal: 0.5.rem),
+      radius: BorderRadius.circular(0.5.rem),
+      border: Border.all(width: 1.px, color: borderColor),
+    ),
+    css('.locale-btn').styles(
+      fontSize: 0.75.rem,
+      fontWeight: FontWeight.w600,
+      padding: Padding.symmetric(vertical: 0.125.rem, horizontal: 0.375.rem),
+      radius: BorderRadius.circular(0.25.rem),
+      color: textMutedColor,
+      raw: {'cursor': 'pointer', 'border': 'none', 'background': 'none'},
+    ),
+    css('.locale-btn--active').styles(
+      backgroundColor: primaryColor,
+      color: const Color('#ffffff'),
+    ),
+    css('.locale-btn:not(.locale-btn--active):hover').styles(color: textPrimaryColor),
     css.media(MediaQuery.raw('(max-width: 768px)'), [
       css('.navbar__links').styles(display: .none),
     ]),
@@ -70,28 +90,45 @@ class NavbarState extends State<Navbar> {
   @override
   void initState() {
     super.initState();
-    // スクロール検知は package:web の JS Interop で実装する
-    // 例: web.window.onscroll = (web.Event _) {
-    //   setState(() => _scrolled = web.window.scrollY > 50);
-    // }.toJS;
-    // kIsWeb フラグで browser/server を切り分けることができる
   }
 
   @override
   Component build(BuildContext context) {
+    final provider = LocaleProvider.of(context);
+    final s = provider.strings;
+    final locale = provider.locale;
+
     return nav(
       classes: 'navbar${_scrolled ? ' navbar--scrolled' : ''}',
       [
         div(classes: 'navbar__inner', [
           a(href: '#', classes: 'navbar__logo', [Component.text('Pulse')]),
           div(classes: 'navbar__links', [
-            a(href: '#features', classes: 'navbar__link', [Component.text('Features')]),
-            a(href: '#demo', classes: 'navbar__link', [Component.text('Live Demo')]),
-            a(href: '#platform', classes: 'navbar__link', [Component.text('Platform')]),
+            a(href: '#features', classes: 'navbar__link', [Component.text(s.navFeatures)]),
+            a(href: '#demo', classes: 'navbar__link', [Component.text(s.navDemo)]),
+            a(href: '#platform', classes: 'navbar__link', [Component.text(s.navPlatform)]),
           ]),
-          const AppButton(label: 'Get Started', href: '/app/', variant: ButtonVariant.primary),
+          div(classes: 'navbar__links', [
+            _localeToggle(locale, provider.onLocaleChanged),
+            AppButton(label: s.navGetStarted, href: '/app/', variant: ButtonVariant.primary),
+          ]),
         ]),
       ],
     );
+  }
+
+  Component _localeToggle(AppLocale current, void Function(AppLocale) onChange) {
+    return div(classes: 'locale-toggle', [
+      button(
+        classes: 'locale-btn${current == AppLocale.en ? ' locale-btn--active' : ''}',
+        events: {'click': (e) => onChange(AppLocale.en)},
+        [Component.text('EN')],
+      ),
+      button(
+        classes: 'locale-btn${current == AppLocale.ja ? ' locale-btn--active' : ''}',
+        events: {'click': (e) => onChange(AppLocale.ja)},
+        [Component.text('JA')],
+      ),
+    ]);
   }
 }

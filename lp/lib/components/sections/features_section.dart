@@ -1,50 +1,34 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/section_wrapper.dart';
-
-class _Feature {
-  const _Feature(this.icon, this.title, this.description);
-  final String icon;
-  final String title;
-  final String description;
-}
-
-const _features = [
-  _Feature('⚡️', 'Real-time Feed', "Posts, reactions, and comments update instantly across all devices — powered by Flutter's reactive UI."),
-  _Feature('📸', 'Stories & Moments', "Share your day with disappearing stories. Full-screen, immersive — built with Flutter's animation engine."),
-  _Feature('💬', 'Direct Messaging', 'Encrypted DMs with read receipts, emoji reactions, and media sharing — native feel on every platform.'),
-  _Feature('🔔', 'Smart Notifications', 'Contextual push notifications that respect your focus time. Powered by platform-native APIs via Flutter plugins.'),
-  _Feature('🌐', 'Cross-Platform', 'One Dart codebase. Pixel-perfect on Web, iOS, and Android. No compromises, no wrappers.'),
-  _Feature('🔒', 'Privacy First', 'End-to-end encryption, granular privacy controls, and zero data selling. Your data stays yours.'),
-];
 
 class FeaturesSection extends StatelessComponent {
   const FeaturesSection({super.key});
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
     return SectionWrapper(
       id: 'features',
       classes: 'features-section',
       children: [
         div(classes: 'features-section__header', [
-          h2(classes: 'section-title', [Component.text('Everything you need to connect')]),
-          p(classes: 'section-subtitle', [
-            Component.text('Built from the ground up with Flutter — every interaction is fast, smooth, and native.'),
-          ]),
+          h2(classes: 'section-title', [Component.text(s.featuresTitle)]),
+          p(classes: 'section-subtitle', [Component.text(s.featuresSubtitle)]),
         ]),
-        div(classes: 'features-grid', _features.map(_buildCard).toList()),
+        div(classes: 'features-grid', s.features.map(_buildCard).toList()),
       ],
     );
   }
 
-  Component _buildCard(_Feature f) {
+  Component _buildCard(({String icon, String title, String desc}) f) {
     return div(classes: 'feature-card', [
       div(classes: 'feature-card__icon', [Component.text(f.icon)]),
       h3(classes: 'feature-card__title', [Component.text(f.title)]),
-      p(classes: 'feature-card__desc', [Component.text(f.description)]),
+      p(classes: 'feature-card__desc', [Component.text(f.desc)]),
     ]);
   }
 

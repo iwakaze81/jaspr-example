@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 
 class Footer extends StatelessComponent {
@@ -8,11 +9,13 @@ class Footer extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
+
     return footer(classes: 'footer', [
       div(classes: 'footer__inner', [
         div(classes: 'footer__brand', [
           span(classes: 'footer__logo', [Component.text('Pulse')]),
-          p(classes: 'footer__tagline', [Component.text('The social platform built with Flutter.')]),
+          p(classes: 'footer__tagline', [Component.text(s.footerTagline)]),
         ]),
         div(classes: 'footer__links', [
           _linkGroup('Product', ['Features', 'Pricing', 'Changelog', 'Roadmap']),
@@ -82,10 +85,7 @@ class Footer extends StatelessComponent {
       flexDirection: .column,
       gap: Gap(row: 0.5.rem, column: 0.5.rem),
     ),
-    css('.footer__group-links a').styles(
-      fontSize: 0.875.rem,
-      color: textMutedColor,
-    ),
+    css('.footer__group-links a').styles(fontSize: 0.875.rem, color: textMutedColor),
     css('.footer__group-links a:hover').styles(color: textPrimaryColor),
     css('.footer__bottom').styles(
       maxWidth: 1200.px,
@@ -94,9 +94,6 @@ class Footer extends StatelessComponent {
       border: Border.only(top: BorderSide(color: borderColor, width: 1.px)),
       textAlign: .center,
     ),
-    css('.footer__bottom p').styles(
-      fontSize: 0.875.rem,
-      color: textMutedColor,
-    ),
+    css('.footer__bottom p').styles(fontSize: 0.875.rem, color: textMutedColor),
   ];
 }

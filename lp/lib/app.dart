@@ -3,6 +3,7 @@ import 'package:jaspr/jaspr.dart';
 
 import 'components/layout/footer.dart';
 import 'components/layout/navbar.dart';
+import 'i18n/locale_provider.dart';
 import 'pages/home_page.dart';
 
 // @client によりビルド時にプリレンダリングされ、ブラウザでハイドレーションされる
@@ -12,11 +13,9 @@ class App extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return div(classes: 'app', [
-      const Navbar(),
-      const HomePage(),
-      const Footer(),
-    ]);
+    return const LocaleController(
+      child: _AppContent(),
+    );
   }
 
   @css
@@ -27,4 +26,17 @@ class App extends StatelessComponent {
       minHeight: 100.vh,
     ),
   ];
+}
+
+class _AppContent extends StatelessComponent {
+  const _AppContent();
+
+  @override
+  Component build(BuildContext context) {
+    return div(classes: 'app', [
+      const Navbar(),
+      const HomePage(),
+      const Footer(),
+    ]);
+  }
 }

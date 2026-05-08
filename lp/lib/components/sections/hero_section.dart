@@ -1,6 +1,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../i18n/locale_provider.dart';
 import '../../styles/theme.dart';
 import '../ui/badge.dart';
 import '../ui/button.dart';
@@ -10,20 +11,20 @@ class HeroSection extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final s = LocaleProvider.of(context).strings;
+
     return section(classes: 'hero', [
       div(classes: 'hero__content', [
-        const Badge(label: '✦ Open Beta — Join Now'),
+        Badge(label: s.heroBadge),
         h1(classes: 'hero__title', [
-          span([Component.text('Connect. Share.')]),
+          span([Component.text(s.heroTitle1)]),
           br(),
-          span(classes: 'gradient-text', [Component.text('Thrive. Together.')]),
+          span(classes: 'gradient-text', [Component.text(s.heroTitle2)]),
         ]),
-        p(classes: 'hero__subtitle', [
-          Component.text('The social platform built entirely with Flutter — native performance on Web, iOS, and Android from a single codebase.'),
-        ]),
+        p(classes: 'hero__subtitle', [Component.text(s.heroSubtitle)]),
         div(classes: 'hero__actions', [
-          const AppButton(label: 'Get Started Free', href: '/app/', size: 'lg'),
-          const AppButton(label: 'Live Demo ↓', href: '#demo', variant: ButtonVariant.secondary, size: 'lg'),
+          AppButton(label: s.heroCtaPrimary, href: '/app/', size: 'lg'),
+          AppButton(label: s.heroCtaSecondary, href: '#demo', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
         div(classes: 'hero__platforms', [
           span(classes: 'platform-badge', [Component.text('🌐 Web')]),
@@ -40,7 +41,7 @@ class HeroSection extends StatelessComponent {
       div(classes: 'mockup__phone', [
         div(classes: 'mockup__screen', [
           _post('mockup__avatar', 'Yuki T.', 'Flutter makes cross-platform feel native 🚀', '❤️ 142', '💬 38'),
-          _post('mockup__avatar--2', 'Taro M.', 'Just shipped the new feature ✨ Built with Pulse!', '❤️ 98', '💬 21'),
+          _post('mockup__avatar--2', 'Taro M.', 'Just shipped the new feature ✨', '❤️ 98', '💬 21'),
         ]),
       ]),
     ]);
@@ -144,11 +145,7 @@ class HeroSection extends StatelessComponent {
       raw: {'background': 'linear-gradient(135deg, #ec4899, #f97316)'},
     ),
     css('.mockup__name').styles(fontSize: 0.8125.rem, fontWeight: FontWeight.w600),
-    css('.mockup__body').styles(
-      fontSize: 0.875.rem,
-      color: textSecondaryColor,
-      margin: Margin.only(top: 0.25.rem),
-    ),
+    css('.mockup__body').styles(fontSize: 0.875.rem, color: textSecondaryColor, margin: Margin.only(top: 0.25.rem)),
     css('.mockup__actions').styles(
       display: .flex,
       gap: Gap(row: 1.rem, column: 1.rem),
