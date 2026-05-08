@@ -37,7 +37,7 @@ jobs:
         working-directory: flutter_app
         run: |
           flutter build web \
-            --base-href /jaspr-example/app/ \
+            --base-href /app/ \
             --release
 
       # ── Jaspr LP ─────────────────────────────────────────────────

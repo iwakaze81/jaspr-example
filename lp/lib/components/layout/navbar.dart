@@ -88,7 +88,7 @@ class NavbarState extends State<Navbar> {
             a(href: '#demo', classes: 'navbar__link', [text('Live Demo')]),
             a(href: '#platform', classes: 'navbar__link', [text('Platform')]),
           ]),
-          const AppButton(label: 'Get Started', href: '/jaspr-example/app/', variant: ButtonVariant.primary),
+          const AppButton(label: 'Get Started', href: '/app/', variant: ButtonVariant.primary),
         ]),
       ],
     );

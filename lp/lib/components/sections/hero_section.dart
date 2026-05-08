@@ -22,7 +22,7 @@ class HeroSection extends StatelessComponent {
           text('The social platform built entirely with Flutter — native performance on Web, iOS, and Android from a single codebase.'),
         ]),
         div(classes: 'hero__actions', [
-          const AppButton(label: 'Get Started Free', href: '/jaspr-example/app/', size: 'lg'),
+          const AppButton(label: 'Get Started Free', href: '/app/', size: 'lg'),
           const AppButton(label: 'Live Demo ↓', href: '#demo', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
         div(classes: 'hero__platforms', [

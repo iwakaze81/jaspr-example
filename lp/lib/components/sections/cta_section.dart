@@ -22,7 +22,7 @@ class CtaSection extends StatelessComponent {
           text('Built with Flutter — one app, everywhere.'),
         ]),
         div(classes: 'cta-section__actions', [
-          const AppButton(label: 'Try Web App', href: '/jaspr-example/app/', size: 'lg'),
+          const AppButton(label: 'Try Web App', href: '/app/', size: 'lg'),
           const AppButton(label: '↓ App Store', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
           const AppButton(label: '↓ Google Play', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
