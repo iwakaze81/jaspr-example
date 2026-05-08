@@ -23,14 +23,14 @@ class FlutterDemoSection extends StatelessComponent {
           div(classes: 'demo-section__text', [
             const Badge(label: '✦ Powered by jaspr_flutter_embed'),
             h2(classes: 'section-title demo-section__title', [
-              text('Experience the app,'),
+              Component.text('Experience the app,'),
               br(),
-              span(classes: 'gradient-text', [text('right here.')]),
+              span(classes: 'gradient-text', [Component.text('right here.')]),
             ]),
             p(classes: 'section-subtitle demo-section__desc', [
-              text('This interactive demo is a real Flutter widget embedded directly in this HTML page using '),
-              code([text('jaspr_flutter_embed')]),
-              text('. No iframe, no redirect — Flutter running inside the DOM.'),
+              Component.text('This interactive demo is a real Flutter widget embedded directly in this HTML page using '),
+              code([Component.text('jaspr_flutter_embed')]),
+              Component.text('. No iframe, no redirect — Flutter running inside the DOM.'),
             ]),
             div(classes: 'demo-section__features', [
               _point('⚡️ Native Flutter rendering'),
@@ -52,7 +52,7 @@ class FlutterDemoSection extends StatelessComponent {
               builder: () => feed.FeedPreviewWidget(),
             ),
             p(classes: 'demo-section__caption', [
-              text('↑ This is Flutter, running natively in your browser'),
+              Component.text('↑ This is Flutter, running natively in your browser'),
             ]),
           ]),
         ]),
@@ -62,7 +62,7 @@ class FlutterDemoSection extends StatelessComponent {
 
   Component _point(String label) {
     return div(classes: 'demo-feature', [
-      span(classes: 'demo-feature__text', [text(label)]),
+      span(classes: 'demo-feature__text', [Component.text(label)]),
     ]);
   }
 

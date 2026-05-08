@@ -15,12 +15,12 @@ class PlatformSection extends StatelessComponent {
       children: [
         div(classes: 'platform-section__header', [
           h2(classes: 'section-title', [
-            text('One codebase.'),
+            Component.text('One codebase.'),
             br(),
-            span(classes: 'gradient-text', [text('Every platform.')]),
+            span(classes: 'gradient-text', [Component.text('Every platform.')]),
           ]),
           p(classes: 'section-subtitle', [
-            text('Flutter compiles to native ARM code on mobile and WebAssembly on the web. No bridges. No wrappers.'),
+            Component.text('Flutter compiles to native ARM code on mobile and WebAssembly on the web. No bridges. No wrappers.'),
           ]),
         ]),
         div(classes: 'platform-cards', [
@@ -52,18 +52,18 @@ class PlatformSection extends StatelessComponent {
 
   Component _card(String icon, String title, String desc, List<String> features) {
     return div(classes: 'platform-card', [
-      div(classes: 'platform-card__icon', [text(icon)]),
-      h3(classes: 'platform-card__title', [text(title)]),
-      p(classes: 'platform-card__desc', [text(desc)]),
-      ul(classes: 'platform-card__features', features.map((f) => li([text('✓  $f')])).toList()),
+      div(classes: 'platform-card__icon', [Component.text(icon)]),
+      h3(classes: 'platform-card__title', [Component.text(title)]),
+      p(classes: 'platform-card__desc', [Component.text(desc)]),
+      ul(classes: 'platform-card__features', features.map((f) => li([Component.text('✓  $f')])).toList()),
     ]);
   }
 
   Component _metric(String value, String label, String sub) {
     return div(classes: 'flutter-metric', [
-      span(classes: 'flutter-metric__value gradient-text', [text(value)]),
-      span(classes: 'flutter-metric__label', [text(label)]),
-      span(classes: 'flutter-metric__sub', [text(sub)]),
+      span(classes: 'flutter-metric__value gradient-text', [Component.text(value)]),
+      span(classes: 'flutter-metric__label', [Component.text(label)]),
+      span(classes: 'flutter-metric__sub', [Component.text(sub)]),
     ]);
   }
 

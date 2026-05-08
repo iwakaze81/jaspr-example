@@ -23,9 +23,9 @@ class AppButton extends StatelessComponent {
   Component build(BuildContext context) {
     final classes = 'btn btn--${variant.name} btn--$size';
     if (href != null) {
-      return a(href: href!, classes: classes, [text(label)]);
+      return a(href: href!, classes: classes, [Component.text(label)]);
     }
-    return button(classes: classes, [text(label)]);
+    return button(classes: classes, [Component.text(label)]);
   }
 
   @css

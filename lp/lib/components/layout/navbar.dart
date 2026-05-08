@@ -64,6 +64,7 @@ class Navbar extends StatefulComponent {
 }
 
 class NavbarState extends State<Navbar> {
+  // ignore: prefer_final_fields
   bool _scrolled = false;
 
   @override
@@ -82,11 +83,11 @@ class NavbarState extends State<Navbar> {
       classes: 'navbar${_scrolled ? ' navbar--scrolled' : ''}',
       [
         div(classes: 'navbar__inner', [
-          a(href: '#', classes: 'navbar__logo', [text('Pulse')]),
+          a(href: '#', classes: 'navbar__logo', [Component.text('Pulse')]),
           div(classes: 'navbar__links', [
-            a(href: '#features', classes: 'navbar__link', [text('Features')]),
-            a(href: '#demo', classes: 'navbar__link', [text('Live Demo')]),
-            a(href: '#platform', classes: 'navbar__link', [text('Platform')]),
+            a(href: '#features', classes: 'navbar__link', [Component.text('Features')]),
+            a(href: '#demo', classes: 'navbar__link', [Component.text('Live Demo')]),
+            a(href: '#platform', classes: 'navbar__link', [Component.text('Platform')]),
           ]),
           const AppButton(label: 'Get Started', href: '/app/', variant: ButtonVariant.primary),
         ]),

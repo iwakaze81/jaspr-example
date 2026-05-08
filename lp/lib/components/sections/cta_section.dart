@@ -12,21 +12,21 @@ class CtaSection extends StatelessComponent {
     return section(classes: 'cta-section', [
       div(classes: 'cta-section__inner', [
         h2(classes: 'cta-section__title', [
-          text('Ready to join'),
+          Component.text('Ready to join'),
           br(),
-          span(classes: 'gradient-text', [text('Pulse?')]),
+          span(classes: 'gradient-text', [Component.text('Pulse?')]),
         ]),
         p(classes: 'cta-section__desc', [
-          text('Start for free. Available on Web, iOS, and Android.'),
+          Component.text('Start for free. Available on Web, iOS, and Android.'),
           br(),
-          text('Built with Flutter — one app, everywhere.'),
+          Component.text('Built with Flutter — one app, everywhere.'),
         ]),
         div(classes: 'cta-section__actions', [
           const AppButton(label: 'Try Web App', href: '/app/', size: 'lg'),
           const AppButton(label: '↓ App Store', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
           const AppButton(label: '↓ Google Play', href: '#', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
-        p(classes: 'cta-section__note', [text('No credit card required. Free forever for personal use.')]),
+        p(classes: 'cta-section__note', [Component.text('No credit card required. Free forever for personal use.')]),
       ]),
     ]);
   }

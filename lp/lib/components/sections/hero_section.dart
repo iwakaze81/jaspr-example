@@ -14,21 +14,21 @@ class HeroSection extends StatelessComponent {
       div(classes: 'hero__content', [
         const Badge(label: '✦ Open Beta — Join Now'),
         h1(classes: 'hero__title', [
-          span([text('Connect. Share.')]),
+          span([Component.text('Connect. Share.')]),
           br(),
-          span(classes: 'gradient-text', [text('Thrive. Together.')]),
+          span(classes: 'gradient-text', [Component.text('Thrive. Together.')]),
         ]),
         p(classes: 'hero__subtitle', [
-          text('The social platform built entirely with Flutter — native performance on Web, iOS, and Android from a single codebase.'),
+          Component.text('The social platform built entirely with Flutter — native performance on Web, iOS, and Android from a single codebase.'),
         ]),
         div(classes: 'hero__actions', [
           const AppButton(label: 'Get Started Free', href: '/app/', size: 'lg'),
           const AppButton(label: 'Live Demo ↓', href: '#demo', variant: ButtonVariant.secondary, size: 'lg'),
         ]),
         div(classes: 'hero__platforms', [
-          span(classes: 'platform-badge', [text('🌐 Web')]),
-          span(classes: 'platform-badge', [text('📱 iOS')]),
-          span(classes: 'platform-badge', [text('📱 Android')]),
+          span(classes: 'platform-badge', [Component.text('🌐 Web')]),
+          span(classes: 'platform-badge', [Component.text('📱 iOS')]),
+          span(classes: 'platform-badge', [Component.text('📱 Android')]),
         ]),
       ]),
       div(classes: 'hero__visual', [_deviceMockup()]),
@@ -50,9 +50,9 @@ class HeroSection extends StatelessComponent {
     return div(classes: 'mockup__post', [
       div(classes: 'mockup__avatar $avatarClass', []),
       div(classes: 'mockup__text', [
-        div(classes: 'mockup__name', [text(name)]),
-        div(classes: 'mockup__body', [text(body)]),
-        div(classes: 'mockup__actions', [span([text(likes)]), span([text(comments)])]),
+        div(classes: 'mockup__name', [Component.text(name)]),
+        div(classes: 'mockup__body', [Component.text(body)]),
+        div(classes: 'mockup__actions', [span([Component.text(likes)]), span([Component.text(comments)])]),
       ]),
     ]);
   }

@@ -11,8 +11,8 @@ class Footer extends StatelessComponent {
     return footer(classes: 'footer', [
       div(classes: 'footer__inner', [
         div(classes: 'footer__brand', [
-          span(classes: 'footer__logo', [text('Pulse')]),
-          p(classes: 'footer__tagline', [text('The social platform built with Flutter.')]),
+          span(classes: 'footer__logo', [Component.text('Pulse')]),
+          p(classes: 'footer__tagline', [Component.text('The social platform built with Flutter.')]),
         ]),
         div(classes: 'footer__links', [
           _linkGroup('Product', ['Features', 'Pricing', 'Changelog', 'Roadmap']),
@@ -21,15 +21,15 @@ class Footer extends StatelessComponent {
         ]),
       ]),
       div(classes: 'footer__bottom', [
-        p([text('© 2025 Pulse. Built with Flutter & Jaspr.')]),
+        p([Component.text('© 2025 Pulse. Built with Flutter & Jaspr.')]),
       ]),
     ]);
   }
 
   Component _linkGroup(String title, List<String> links) {
     return div(classes: 'footer__group', [
-      span(classes: 'footer__group-title', [text(title)]),
-      ul(classes: 'footer__group-links', links.map((l) => li([a(href: '#', [text(l)])])).toList()),
+      span(classes: 'footer__group-title', [Component.text(title)]),
+      ul(classes: 'footer__group-links', links.map((l) => li([a(href: '#', [Component.text(l)])])).toList()),
     ]);
   }
 

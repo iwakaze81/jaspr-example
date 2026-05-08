@@ -41,7 +41,7 @@ class TestimonialsSection extends StatelessComponent {
     return SectionWrapper(
       id: 'testimonials',
       children: [
-        h2(classes: 'section-title', [text('Loved by the community')]),
+        h2(classes: 'section-title', [Component.text('Loved by the community')]),
         div(classes: 'testimonials-grid', _testimonials.map(_buildCard).toList()),
       ],
     );
@@ -49,8 +49,8 @@ class TestimonialsSection extends StatelessComponent {
 
   Component _buildCard(_Testimonial t) {
     return div(classes: 'testimonial-card', [
-      div(classes: 'stars', [text('★★★★★')]),
-      p(classes: 'testimonial-card__quote', [text(t.quote)]),
+      div(classes: 'stars', [Component.text('★★★★★')]),
+      p(classes: 'testimonial-card__quote', [Component.text(t.quote)]),
       div(classes: 'testimonial-card__author', [
         // インラインスタイルで個別の背景色を指定
         div(
@@ -59,8 +59,8 @@ class TestimonialsSection extends StatelessComponent {
           [],
         ),
         div([
-          span(classes: 'testimonial-card__name', [text(t.name)]),
-          span(classes: 'testimonial-card__handle', [text(t.handle)]),
+          span(classes: 'testimonial-card__name', [Component.text(t.name)]),
+          span(classes: 'testimonial-card__handle', [Component.text(t.handle)]),
         ]),
       ]),
     ]);

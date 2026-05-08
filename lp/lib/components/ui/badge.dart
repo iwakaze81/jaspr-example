@@ -10,7 +10,7 @@ class Badge extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return span(classes: 'badge', [text(label)]);
+    return span(classes: 'badge', [Component.text(label)]);
   }
 
   @css

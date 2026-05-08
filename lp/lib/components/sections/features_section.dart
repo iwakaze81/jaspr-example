@@ -30,9 +30,9 @@ class FeaturesSection extends StatelessComponent {
       classes: 'features-section',
       children: [
         div(classes: 'features-section__header', [
-          h2(classes: 'section-title', [text('Everything you need to connect')]),
+          h2(classes: 'section-title', [Component.text('Everything you need to connect')]),
           p(classes: 'section-subtitle', [
-            text('Built from the ground up with Flutter — every interaction is fast, smooth, and native.'),
+            Component.text('Built from the ground up with Flutter — every interaction is fast, smooth, and native.'),
           ]),
         ]),
         div(classes: 'features-grid', _features.map(_buildCard).toList()),
@@ -42,9 +42,9 @@ class FeaturesSection extends StatelessComponent {
 
   Component _buildCard(_Feature f) {
     return div(classes: 'feature-card', [
-      div(classes: 'feature-card__icon', [text(f.icon)]),
-      h3(classes: 'feature-card__title', [text(f.title)]),
-      p(classes: 'feature-card__desc', [text(f.description)]),
+      div(classes: 'feature-card__icon', [Component.text(f.icon)]),
+      h3(classes: 'feature-card__title', [Component.text(f.title)]),
+      p(classes: 'feature-card__desc', [Component.text(f.description)]),
     ]);
   }
 
